@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-
+const formRoutes = require('./routes/form');
 const authRoutes = require('./routes/auth');
 const authMiddleware = require('./middleware/authMiddleware');
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
-
+app.use('/api/form', formRoutes);
 // Protected Route Example
 app.get('/api/protected', authMiddleware, (req, res) => {
   res.json({ message: `Hello ${req.user.id}, you are authorized!` });

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Preview from './pages/Preview';
 
 const App = () => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/register" element={isAuthenticated ? <Navigate to="/home" /> : <Register />} />
         <Route path="/home" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/preview" element={<Preview />} />
       </Routes>
     </Router>
   );
